@@ -1,0 +1,17 @@
+{
+    "contents" : "heroes$HeroID <- as.factor(heroes$HeroID)\n\nreplay_ss <- sample(unique(heroes$ReplayID), length(unique(heroes$ReplayID))*.01)\n\n\nave_MMR_per_side <-  aggregate(data = heroes,  MMR.Before ~ Is.Winner + ReplayID, mean)\ncolnames(ave_MMR_per_side)[3] <- 'Ave.team.MMR'\n\nheroes <- merge(heroes, ave_MMR_per_side, by = c('ReplayID', 'Is.Winner'))\ncolnames(heroes)[ncol(heroes)] <- 'Same.team.MMR'\n\nlevels(ave_MMR_per_side$Is.Winner) <- c('True', 'False')\nheroes <- merge(heroes, ave_MMR_per_side, by = c('ReplayID', 'Is.Winner'))\ncolnames(heroes)[ncol(heroes)] <- 'Opp.team.MMR'\nheroes_ss <- heroes[heroes$ReplayID %in% replay_ss, ]\n\ntraining_rows <- sample(nrow(heroes_ss), nrow(heroes_ss)*.8)\n\ntrain_data <- heroes_ss[training_rows, ]\ntest_data <- heroes_ss[-training_rows, ]\n\nMMR_model <- lm(data = train_data, MMR.Before ~  Is.Auto.Select + Hero.Level + Is.Winner + Same.team.MMR + Opp.team.MMR)\n\n# RMSE\nprint(paste('RMSE:', round(mean((test_data$MMR.Before - predict(MMR_model, test_data))^2)^.5,2)))\nprint(paste('Out by', round(mean(abs(predict(MMR_model, heroes) - heroes$MMR.Before)), 2), 'on average'))\n      ",
+    "created" : 1476728581944.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "455860486",
+    "id" : "A00CDF56",
+    "lastKnownWriteTime" : 1476732638,
+    "path" : "G:/hots/lm.R",
+    "project_path" : "lm.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
