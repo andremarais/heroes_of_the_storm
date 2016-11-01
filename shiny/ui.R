@@ -1,4 +1,4 @@
-hero_winrate <- read.csv('../MMR_hero_overtime.csv')
+hero_winrate <- read.csv('data/MMR_hero_overtime.csv')
 hero_winrate$Game.Date <- as.Date(as.character(hero_winrate$Game.Date), '%Y-%m-%d')
 
 shinyUI(fluidPage(
@@ -8,19 +8,30 @@ shinyUI(fluidPage(
     column(
       wellPanel(selectInput('HotsSelectInput',
                             'Select:',
-                            choices = c('Hero MMR rating over time',
+                            choices = c('Hero popularity',
+                                        'Hero MMR rating',
                                         'Win rate per role per map'),
                             selected = 'Hero MMR rating over time'
-      )
       ),
-      width = 3),
-    
-    
-
+      conditionalPanel(
+        condition = "input.HotsSelectInput == 'Hero MMR rating'",
+      
+      checkboxInput('MMROverTime',
+                    'Over time')
+      ),
+      conditionalPanel(
+        condition = "input.HotsSelectInput == 'Hero popularity'",
+        
+        radioButtons('PopRatio',
+                      'Fill:',
+                     choices = c('Group', 'Difficulty'))
+      )
+    ),
+    width = 3),
   
   column(
     conditionalPanel(
-      condition = "input.HotsSelectInput == 'Hero MMR rating over time'",
+      condition = "input.HotsSelectInput == 'Hero MMR rating' & input.MMROverTime",
       wellPanel(sliderInput('HeroMMRSlider',
                             'Date',
                             min = min(hero_winrate$Game.Date),

@@ -15,14 +15,16 @@ print('Merging done')
 def change_date(x):
     new_date = datetime.datetime.strptime(x, '%m/%d/%Y %H:%M:%S %p').strftime('%Y-%m-%d')
     return new_date
-
+# Add proper date field for R
 all_games['Game Date'] = all_games['Timestamp (UTC)'].apply(change_date)
 
-pd.DataFrame(all_games.groupby(['HeroID', 'Group', 'Game Date'])['Adj MMR Before'].mean()).to_csv('MMR_hero_overtime.csv')
+# MMR rate per hero over time
+pd.DataFrame(all_games.groupby(['HeroID', 'Group', 'Game Date'])['Adj MMR Before'].mean()).to_csv('shiny/data/MMR_hero_overtime.csv')
 
-pd.DataFrame(all_games.groupby(['PrimaryName', 'Group', 'SubGroup', 'Game Date'])['Is Winner'].mean()).to_csv('Hero_winrate.csv')
+# Hero winrate over time
+pd.DataFrame(all_games.groupby(['PrimaryName', 'Group', 'SubGroup', 'Game Date'])['Is Winner'].mean()).to_csv('shiny/data/Hero_winrate.csv')
 
-
+# Role presence for each map
 winners = pd.DataFrame(all_games[all_games['Is Winner'] == True].groupby(['ReplayID', 'MapID', 'Group'])['Is Winner'].count())
 winners['ReplayID'], winners['MapID'], winners['Group'] = [i[0] for i in winners.index.values], [i[1] for i in winners.index.values], [i[2] for i in winners.index.values]
 winners.columns = ['Winning_team', 'ReplayID', 'MapID', 'Group']
@@ -34,25 +36,16 @@ losers.columns = ['Losing_team', 'ReplayID', 'MapID', 'Group']
 group_games = winners.merge(losers, on=['ReplayID', 'MapID', 'Group'], how='outer').fillna(0)
 group_games['Group difference'] = group_games['Winning_team'] - group_games['Losing_team']
 
-pd.DataFrame(group_games.groupby(['MapID', 'Group'])['Group difference'].mean()).to_csv('Group_diff.csv')
+pd.DataFrame(group_games.groupby(['MapID', 'Group'])['Group difference'].mean()).to_csv('shiny/data/Group_diff.csv')
 
-"""
-winners_sub = pd.DataFrame(all_games[all_games['Is Winner'] == True].groupby(['ReplayID', 'MapID', 'SubGroup'])['Is Winner'].count())
-winners_sub['ReplayID'], winners_sub['MapID'], winners_sub['SubGroup'] = [i[0] for i in winners_sub.index.values], [i[1] for i in winners_sub.index.values], [i[2] for i in winners_sub.index.values]
-winners_sub.columns = ['Winning_team', 'ReplayID', 'MapID', 'SubGroup']
 
-losers_sub = pd.DataFrame(all_games[all_games['Is Winner'] == False].groupby(['ReplayID', 'MapID', 'SubGroup'])['Is Winner'].count())
-losers_sub['ReplayID'], losers_sub['MapID'], losers_sub['SubGroup'] = [i[0] for i in losers_sub.index.values], [i[1] for i in losers_sub.index.values], [i[2] for i in losers_sub.index.values]
-losers_sub.columns = ['Losing_team', 'ReplayID', 'MapID', 'SubGroup']
+# MMR rating of winning/ losing playesr of each hero
+pd.DataFrame(all_games.groupby(['PrimaryName', 'Group', 'Is Winner'])['Adj MMR Before'].mean()).to_csv('shiny/data/WinningMMRperHero.csv')
 
-group_games_sub = winners_sub.merge(losers_sub, on=['ReplayID', 'MapID', 'SubGroup'], how='outer').fillna(0)
-group_games_sub['Subgroup difference'] = group_games_sub['Winning_team'] - group_games_sub['Losing_team']
+# hero popularity
+pd.DataFrame(all_games.groupby(['PrimaryName', 'Group', 'Difficulty', 'Game Date'])['Game Date'].size()).to_csv('shiny/data/Popularity.csv')
 
-pd.DataFrame(group_games_sub.groupby(['MapID', 'SubGroup'])['Subgroup difference'].mean()).to_csv('Subgroup_diff.csv')
-
-# doesnt add much value
-"""
-
-a = all_games.head(10000)
-pd.DataFrame(all_games.groupby(['Group', 'SubGroup'])['Is Winner'].mean()).to_csv('Role_winrate.csv')
-all_games.groupby(['Difficulty'])['Adj MMR Before'].mean()
+# Effect of autoselect
+a = all_games.head(500000)
+a.groupby(['Is Auto Select', 'Is Winner'])['Adj MMR Before'].mean()
+pd.DataFrame(all_games.groupby(['PrimaryName', 'Is Auto Select'])['Is Winner'].mean()).to_csv('shiny/data/Auto.csv')
