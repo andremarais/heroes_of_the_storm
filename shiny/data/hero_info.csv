@@ -1,0 +1,59 @@
+HeroID,PrimaryName,Group,SubGroup,Difficulty
+1,Abathur,Specialist,Utility,Very Hard
+56,Alarak,Assassin,Ambusher,Hard
+2,Anub'arak,Warrior,Bruiser,Medium
+43,Artanis,Warrior,Bruiser,Medium
+3,Arthas,Warrior,Bruiser,Medium
+55,Auriel,Support,Healer,Hard
+4,Azmodan,Specialist,Siege,Easy
+5,Brightwing,Support,Healer,Hard
+6,Chen,Warrior,Tank,Hard
+44,Cho,Warrior,Tank,Medium
+52,Chromie,Assassin,Burst Damage,Hard
+50,Dehaka,Warrior,Tank,Easy
+7,Diablo,Warrior,Tank,Medium
+8,E.T.C.,Warrior,Tank,Medium
+9,Falstad,Assassin,Sustained Damage,Hard
+45,Gall,Assassin,Sustained Damage,Easy
+10,Gazlowe,Specialist,Siege,Medium
+47,Greymane,Assassin,Sustained Damage,Hard
+54,Gul'dan,Assassin,Sustained Damage,Medium
+11,Illidan,Assassin,Sustained Damage,Very Hard
+12,Jaina,Assassin,Burst Damage,Medium
+13,Johanna,Warrior,Tank,Medium
+14,Kael'thas,Assassin,Burst Damage,Easy
+15,Kerrigan,Assassin,Ambusher,Medium
+16,Kharazim,Support,Healer,Medium
+17,Leoric,Warrior,Bruiser,Hard
+18,Li Li,Support,Healer,Easy
+48,Li-Ming,Assassin,Burst Damage,Hard
+42,Lt. Morales,Support,Healer,Medium
+46,Lunara,Assassin,Sustained Damage,Medium
+19,Malfurion,Support,Healer,Easy
+53,Medivh,Specialist,Support,Very Hard
+20,Muradin,Warrior,Tank,Medium
+21,Murky,Specialist,Utility,Medium
+22,Nazeebo,Specialist,Sustained Damage,Medium
+23,Nova,Assassin,Ambusher,Medium
+24,Raynor,Assassin,Sustained Damage,Easy
+25,Rehgar,Support,Healer,Medium
+41,Rexxar,Warrior,Tank,Hard
+58,Samuro,Assassin,Ambusher,Hard
+26,Sgt. Hammer,Specialist,Siege,Hard
+27,Sonya,Warrior,Bruiser,Medium
+28,Stitches,Warrior,Tank,Medium
+29,Sylvanas,Specialist,Siege,Easy
+30,Tassadar,Support,Support,Very Hard
+31,The Butcher,Assassin,Ambusher,Medium
+32,The Lost Vikings,Specialist,Utility,Very Hard
+33,Thrall,Assassin,Sustained Damage,Medium
+51,Tracer,Assassin,Sustained Damage,Hard
+34,Tychus,Assassin,Sustained Damage,Hard
+35,Tyrael,Warrior,Bruiser,Medium
+36,Tyrande,Support,Healer,Medium
+37,Uther,Support,Healer,Easy
+38,Valla,Assassin,Sustained Damage,Easy
+49,Xul,Specialist,Siege,Easy
+39,Zagara,Specialist,Siege,Medium
+57,Zarya,Warrior,Tank,Medium
+40,Zeratul,Assassin,Ambusher,Hard

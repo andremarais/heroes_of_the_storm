@@ -1,0 +1,59 @@
+ID,Name,Group,SubGroup
+0,Unknown,,
+1,Abathur,Specialist,Utility
+2,Anub'arak,Warrior,Bruiser
+3,Arthas,Warrior,Bruiser
+4,Azmodan,Specialist,Siege
+5,Brightwing,Support,Healer
+6,Chen,Warrior,Tank
+7,Diablo,Warrior,Tank
+8,E.T.C.,Warrior,Tank
+9,Falstad,Assassin,Sustained Damage
+10,Gazlowe,Specialist,Siege
+11,Illidan,Assassin,Sustained Damage
+12,Jaina,Assassin,Burst Damage
+13,Johanna,Warrior,Tank
+14,Kael'thas,Assassin,Burst Damage
+15,Kerrigan,Assassin,Ambusher
+16,Kharazim,Support,Healer
+17,Leoric,Warrior,Bruiser
+18,Li Li,Support,Healer
+19,Malfurion,Support,Healer
+20,Muradin,Warrior,Tank
+21,Murky,Specialist,Utility
+22,Nazeebo,Specialist,Sustained Damage
+23,Nova,Assassin,Ambusher
+24,Raynor,Assassin,Sustained Damage
+25,Rehgar,Support,Healer
+26,Sgt. Hammer,Specialist,Siege
+27,Sonya,Warrior,Bruiser
+28,Stitches,Warrior,Tank
+29,Sylvanas,Specialist,Siege
+30,Tassadar,Support,Support
+31,The Butcher,Assassin,Ambusher
+32,The Lost Vikings,Specialist,Utility
+33,Thrall,Assassin,Sustained Damage
+34,Tychus,Assassin,Sustained Damage
+35,Tyrael,Warrior,Bruiser
+36,Tyrande,Support,Support
+37,Uther,Support,Healer
+38,Valla,Assassin,Sustained Damage
+39,Zagara,Specialist,Siege
+40,Zeratul,Assassin,Ambusher
+41,Rexxar,Warrior,Tank
+42,Lt. Morales,Support,Healer
+43,Artanis,Warrior,Bruiser
+44,Cho,Warrior,Tank
+45,Gall,Assassin,Sustained Damage
+46,Lunara,Assassin,Sustained Damage
+47,Greymane,Assassin,Sustained Damage
+1001,Battlefield of Eternity,,
+1002,Blackheart's Bay,,
+1003,Cursed Hollow,,
+1004,Dragon Shire,,
+1005,Garden of Terror,,
+1006,Haunted Mines,,
+1007,Infernal Shrines,,
+1008,Sky Temple,,
+1009,Tomb of the Spider Queen,,
+1010,Towers of Doom,,

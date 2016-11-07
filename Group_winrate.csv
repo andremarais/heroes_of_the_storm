@@ -1,0 +1,181 @@
+Is Winner,MapID,Group,SubGroup,Is Winner
+False,1001,Assassin,Ambusher,102535
+False,1001,Assassin,Burst Damage,86727
+False,1001,Assassin,Sustained Damage,238084
+False,1001,Specialist,Siege,115494
+False,1001,Specialist,Sustained Damage,24162
+False,1001,Specialist,Utility,45291
+False,1001,Support,Healer,171137
+False,1001,Support,Support,20456
+False,1001,Warrior,Bruiser,103809
+False,1001,Warrior,Tank,150230
+False,1002,Assassin,Ambusher,103564
+False,1002,Assassin,Burst Damage,82366
+False,1002,Assassin,Sustained Damage,245049
+False,1002,Specialist,Siege,113450
+False,1002,Specialist,Sustained Damage,23933
+False,1002,Specialist,Utility,45480
+False,1002,Support,Healer,171987
+False,1002,Support,Support,20171
+False,1002,Warrior,Bruiser,103759
+False,1002,Warrior,Tank,147411
+False,1003,Assassin,Ambusher,102490
+False,1003,Assassin,Burst Damage,85571
+False,1003,Assassin,Sustained Damage,242483
+False,1003,Specialist,Siege,111857
+False,1003,Specialist,Sustained Damage,23499
+False,1003,Specialist,Utility,48967
+False,1003,Support,Healer,170870
+False,1003,Support,Support,20076
+False,1003,Warrior,Bruiser,101594
+False,1003,Warrior,Tank,148498
+False,1004,Assassin,Ambusher,99737
+False,1004,Assassin,Burst Damage,83458
+False,1004,Assassin,Sustained Damage,249107
+False,1004,Specialist,Siege,114592
+False,1004,Specialist,Sustained Damage,23316
+False,1004,Specialist,Utility,43656
+False,1004,Support,Healer,171762
+False,1004,Support,Support,19241
+False,1004,Warrior,Bruiser,102802
+False,1004,Warrior,Tank,147879
+False,1005,Assassin,Ambusher,102165
+False,1005,Assassin,Burst Damage,85863
+False,1005,Assassin,Sustained Damage,239917
+False,1005,Specialist,Siege,112759
+False,1005,Specialist,Sustained Damage,23994
+False,1005,Specialist,Utility,47211
+False,1005,Support,Healer,172557
+False,1005,Support,Support,19267
+False,1005,Warrior,Bruiser,102014
+False,1005,Warrior,Tank,149163
+False,1007,Assassin,Ambusher,102015
+False,1007,Assassin,Burst Damage,89069
+False,1007,Assassin,Sustained Damage,239863
+False,1007,Specialist,Siege,113691
+False,1007,Specialist,Sustained Damage,22457
+False,1007,Specialist,Utility,45672
+False,1007,Support,Healer,170883
+False,1007,Support,Support,19968
+False,1007,Warrior,Bruiser,104570
+False,1007,Warrior,Tank,148882
+False,1008,Assassin,Ambusher,102176
+False,1008,Assassin,Burst Damage,85753
+False,1008,Assassin,Sustained Damage,244912
+False,1008,Specialist,Siege,112477
+False,1008,Specialist,Sustained Damage,24066
+False,1008,Specialist,Utility,46035
+False,1008,Support,Healer,171089
+False,1008,Support,Support,19531
+False,1008,Warrior,Bruiser,100484
+False,1008,Warrior,Tank,149207
+False,1009,Assassin,Ambusher,102903
+False,1009,Assassin,Burst Damage,82753
+False,1009,Assassin,Sustained Damage,245390
+False,1009,Specialist,Siege,115584
+False,1009,Specialist,Sustained Damage,23034
+False,1009,Specialist,Utility,45293
+False,1009,Support,Healer,171396
+False,1009,Support,Support,19628
+False,1009,Warrior,Bruiser,104603
+False,1009,Warrior,Tank,144421
+False,1010,Assassin,Ambusher,100102
+False,1010,Assassin,Burst Damage,86941
+False,1010,Assassin,Sustained Damage,246924
+False,1010,Specialist,Siege,113303
+False,1010,Specialist,Sustained Damage,23829
+False,1010,Specialist,Utility,43830
+False,1010,Support,Healer,172037
+False,1010,Support,Support,20423
+False,1010,Warrior,Bruiser,103530
+False,1010,Warrior,Tank,149436
+True,1001,Assassin,Ambusher,99453
+True,1001,Assassin,Burst Damage,86310
+True,1001,Assassin,Sustained Damage,246372
+True,1001,Specialist,Siege,119723
+True,1001,Specialist,Sustained Damage,25795
+True,1001,Specialist,Utility,42124
+True,1001,Support,Healer,174329
+True,1001,Support,Support,15896
+True,1001,Warrior,Bruiser,97984
+True,1001,Warrior,Tank,149939
+True,1002,Assassin,Ambusher,104561
+True,1002,Assassin,Burst Damage,88387
+True,1002,Assassin,Sustained Damage,236204
+True,1002,Specialist,Siege,119553
+True,1002,Specialist,Sustained Damage,25819
+True,1002,Specialist,Utility,41907
+True,1002,Support,Healer,173198
+True,1002,Support,Support,16736
+True,1002,Warrior,Bruiser,99615
+True,1002,Warrior,Tank,151190
+True,1003,Assassin,Ambusher,103366
+True,1003,Assassin,Burst Damage,87689
+True,1003,Assassin,Sustained Damage,237982
+True,1003,Specialist,Siege,113863
+True,1003,Specialist,Sustained Damage,28052
+True,1003,Specialist,Utility,46420
+True,1003,Support,Healer,173698
+True,1003,Support,Support,16556
+True,1003,Warrior,Bruiser,98138
+True,1003,Warrior,Tank,150141
+True,1004,Assassin,Ambusher,107654
+True,1004,Assassin,Burst Damage,86840
+True,1004,Assassin,Sustained Damage,233346
+True,1004,Specialist,Siege,117705
+True,1004,Specialist,Sustained Damage,27364
+True,1004,Specialist,Utility,44364
+True,1004,Support,Healer,171917
+True,1004,Support,Support,16756
+True,1004,Warrior,Bruiser,99543
+True,1004,Warrior,Tank,150061
+True,1005,Assassin,Ambusher,103965
+True,1005,Assassin,Burst Damage,88712
+True,1005,Assassin,Sustained Damage,240754
+True,1005,Specialist,Siege,110816
+True,1005,Specialist,Sustained Damage,26455
+True,1005,Specialist,Utility,47351
+True,1005,Support,Healer,172076
+True,1005,Support,Support,16550
+True,1005,Warrior,Bruiser,99195
+True,1005,Warrior,Tank,149036
+True,1007,Assassin,Ambusher,97164
+True,1007,Assassin,Burst Damage,92837
+True,1007,Assassin,Sustained Damage,232250
+True,1007,Specialist,Siege,120991
+True,1007,Specialist,Sustained Damage,28666
+True,1007,Specialist,Utility,43913
+True,1007,Support,Healer,173317
+True,1007,Support,Support,16764
+True,1007,Warrior,Bruiser,100445
+True,1007,Warrior,Tank,150723
+True,1008,Assassin,Ambusher,101890
+True,1008,Assassin,Burst Damage,88494
+True,1008,Assassin,Sustained Damage,237577
+True,1008,Specialist,Siege,116057
+True,1008,Specialist,Sustained Damage,26718
+True,1008,Specialist,Utility,44042
+True,1008,Support,Healer,173653
+True,1008,Support,Support,16235
+True,1008,Warrior,Bruiser,100574
+True,1008,Warrior,Tank,150490
+True,1009,Assassin,Ambusher,103021
+True,1009,Assassin,Burst Damage,93859
+True,1009,Assassin,Sustained Damage,230379
+True,1009,Specialist,Siege,123269
+True,1009,Specialist,Sustained Damage,28399
+True,1009,Specialist,Utility,38675
+True,1009,Support,Healer,171717
+True,1009,Support,Support,17053
+True,1009,Warrior,Bruiser,96477
+True,1009,Warrior,Tank,152156
+True,1010,Assassin,Ambusher,107298
+True,1010,Assassin,Burst Damage,88943
+True,1010,Assassin,Sustained Damage,236883
+True,1010,Specialist,Siege,112916
+True,1010,Specialist,Sustained Damage,27582
+True,1010,Specialist,Utility,43816
+True,1010,Support,Healer,174430
+True,1010,Support,Support,17000
+True,1010,Warrior,Bruiser,99105
+True,1010,Warrior,Tank,152382

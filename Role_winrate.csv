@@ -1,0 +1,11 @@
+Group,SubGroup,Is Winner
+Assassin,Ambusher,0.5028940028460629
+Assassin,Burst Damage,0.510687189126
+Assassin,Sustained Damage,0.4930632204272673
+Specialist,Siege,0.5076237909628988
+Specialist,Sustained Damage,0.5356127225795161
+Specialist,Utility,0.4882948384858099
+Support,Healer,0.5023560203516833
+Support,Support,0.4555065837767699
+Warrior,Bruiser,0.49007584803114657
+Warrior,Tank,0.5038998679050031

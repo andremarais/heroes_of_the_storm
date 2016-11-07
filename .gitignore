@@ -15,7 +15,7 @@ $RECYCLE.BIN/
 *.msp
 
 # CSV files
-*.csv
+Replay*.csv
 
 # Windows shortcuts
 *.lnk

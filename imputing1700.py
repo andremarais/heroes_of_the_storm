@@ -19,7 +19,7 @@ def impute_1700(raplay_data, hero_info, replay_info):
     all_games = raplay_data
 
     # sample of n games for modelling
-    games_ss = all_games[all_games['ReplayID'].isin(np.random.choice(np.unique(all_games['ReplayID']), 10000))]
+    games_ss = all_games[all_games['ReplayID'].isin(np.random.choice(np.unique(all_games['ReplayID']), 100000))]
 
     # import replay games info and hero info
     replays = replay_info

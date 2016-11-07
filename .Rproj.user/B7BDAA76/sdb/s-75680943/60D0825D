@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "library(reshape2)\n\nauto <-read.csv('shiny/data/Auto.csv')\n\npop <- read.csv('shiny/data/Popularity.csv')\npop <- aggregate(data = pop, X0~ PrimaryName + Group + Difficulty, mean)\n\n\nauto2 <- dcast(auto, PrimaryName ~ Is.Auto.Select, value.var = 'Is.Winner')\nauto2$diff <- auto2$True - auto2$False\n\npop <- merge(pop, auto2, by = 'PrimaryName', type = 'inner')\n\nplot_colors_fill <- c('dodgerblue2',\n                      'indianred2',\n                      'goldenrod3',\n                      'palegreen3'\n)\n\nplot_colors_outline <- c('dodgerblue4',\n                         'indianred4',\n                         'goldenrod4',\n                         'palegreen4'\n)\n\nggplot(pop) + \n  geom_bar(aes_string(x = reorder(pop$PrimaryName, -pop$X0), \n                      y = pop$X0, \n                      fill = 'diff',\n                      col = 'diff'), \n           stat = 'identity',\n           alpha = .85) +\n  theme_minimal() %+replace%\n  theme(axis.text.x = element_blank(),\n        axis.title.y = element_blank(),\n        plot.background = element_rect(fill = '#808080', color = '#494794'),\n        panel.grid.major = element_line(colour = '#009cff'),\n        panel.grid.minor = element_line(colour = '#009cff'))+\n  # scale_fill_manual(values = plot_colors_fill) +\n  # scale_color_manual(values = plot_colors_outline) +\n  xlab('Hero') +\n  annotate(geom = 'text', \n           x = reorder(pop$PrimaryName, -pop$X0), \n           y = max(pop$X0)*.01, \n           hjust = 0,\n           label = reorder(pop$PrimaryName, -pop$X0), \n           angle = 90,\n           col = 'black') +\n  ggtitle('Hero popularity')",
+    "created" : 1477559173600.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2406107149",
+    "id" : "60D0825D",
+    "lastKnownWriteTime" : 1478247437,
+    "last_content_update" : 1478525026634,
+    "path" : "C:/Worksies/hots/sandpit.R",
+    "project_path" : "sandpit.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
