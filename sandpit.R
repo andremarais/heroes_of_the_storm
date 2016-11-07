@@ -1,75 +1,49 @@
-source('shiny/www/multiplot.R')
+library(reshape2)
 
-HeroLevel_MMR <- read.csv('shiny/data/HeroLevel_MMR.csv')
-HeroLevel_Diff <- read.csv('shiny/data/HeroLevel_Diff.csv')
-levels(HeroLevel_Diff$Difficulty) <- c('Easy', 'Medium', 'Hard', 'Very Hard')
-HeroLevel_Group <- read.csv('shiny/data/HeroLevel_Group.csv')
-HeroLevel_SubGroup <- read.csv('shiny/data/HeroLevel_SubGroup.csv')
+auto <-read.csv('shiny/data/Auto.csv')
+
+pop <- read.csv('shiny/data/Popularity.csv')
+pop <- aggregate(data = pop, X0~ PrimaryName + Group + Difficulty, mean)
 
 
-HM <- ggplot(HeroLevel_MMR) + 
-  geom_bar(aes(x = Hero.Level, y = Adj.MMR.Before), stat = 'identity', 
-           fill = 'dodgerblue2', col = 'dodgerblue2', alpha = .55) + 
+auto2 <- dcast(auto, PrimaryName ~ Is.Auto.Select, value.var = 'Is.Winner')
+auto2$diff <- auto2$True - auto2$False
+
+pop <- merge(pop, auto2, by = 'PrimaryName', type = 'inner')
+
+plot_colors_fill <- c('dodgerblue2',
+                      'indianred2',
+                      'goldenrod3',
+                      'palegreen3'
+)
+
+plot_colors_outline <- c('dodgerblue4',
+                         'indianred4',
+                         'goldenrod4',
+                         'palegreen4'
+)
+
+ggplot(pop) + 
+  geom_bar(aes_string(x = reorder(pop$PrimaryName, -pop$X0), 
+                      y = pop$X0, 
+                      fill = 'diff',
+                      col = 'diff'), 
+           stat = 'identity',
+           alpha = .85) +
   theme_minimal() %+replace%
   theme(axis.text.x = element_blank(),
-        axis.title = element_blank())+
-  xlab('Hero Level') +
-  ylab('Average MMR') + 
-  ggtitle('Average MMR over hero level') +
-  annotate(geom = 'text',
-           x = 0:4*5,
-           label = 0:4*5,
-           y = 0,
-           vjust = 0)
-
-HD <- ggplot(HeroLevel_Diff) + 
-  geom_bar(aes(x = Difficulty, y = Hero.Level), stat = 'identity', 
-           fill = 'dodgerblue2', col = 'dodgerblue2', alpha = .55) + 
-  theme_minimal() %+replace%
-  theme(axis.text.x = element_blank(),
-        axis.title = element_blank())+
-  xlab('Difficulty') +
-  ylab('Average hero level') + 
-  ggtitle('Average hero level over difficulty') +
-  annotate(geom = 'text',
-           x = HeroLevel_Diff$Difficulty,
-           label = HeroLevel_Diff$Difficulty,
-           y = 0,
+        axis.title.y = element_blank(),
+        plot.background = element_rect(fill = '#808080', color = '#494794'),
+        panel.grid.major = element_line(colour = '#009cff'),
+        panel.grid.minor = element_line(colour = '#009cff'))+
+  scale_fill_manual(values = plot_colors_fill) +
+  scale_color_manual(values = plot_colors_outline) +
+  xlab('Hero') +
+  annotate(geom = 'text', 
+           x = reorder(pop$PrimaryName, -pop$X0), 
+           y = max(pop$X0)*.01, 
            hjust = 0,
-           angle = 90)
-
-HG <- ggplot(HeroLevel_Group) + 
-  geom_bar(aes(x = reorder(Group, -Hero.Level), y = Hero.Level), stat = 'identity', 
-           fill = 'dodgerblue2', col = 'dodgerblue2', alpha = .55) + 
-  theme_minimal() %+replace%
-  theme(axis.text.x = element_blank(),
-        axis.title = element_blank())+
-  xlab('Role') +
-  ylab('Average hero level') + 
-  ggtitle('Average hero level over hero role') +
-  annotate(geom = 'text',
-           x = reorder(HeroLevel_Group$Group, -HeroLevel_Group$Hero.Level),
-           label = reorder(HeroLevel_Group$Group, -HeroLevel_Group$Hero.Level),
-           y = 0,
-           hjust = 0,
-           angle = 90)
-
-HS <- ggplot(HeroLevel_SubGroup) +
-  geom_bar(aes(x = reorder(SubGroup, -Hero.Level), 
-               y = Hero.Level), stat = 'identity', 
-           fill = 'dodgerblue2', col = 'dodgerblue2', alpha = .55) + 
-  theme_minimal() %+replace%
-  theme(axis.text.x = element_blank(),
-        axis.title = element_blank())+
-  xlab('Sub-role') +
-  ylab('Average hero level') + 
-  ggtitle('Average hero level over hero sub-role')+
-  annotate(geom = 'text',
-           x = reorder(HeroLevel_SubGroup$SubGroup, -HeroLevel_SubGroup$Hero.Level),
-           label = reorder(HeroLevel_SubGroup$SubGroup, -HeroLevel_SubGroup$Hero.Level),
-           y = 0,
-           hjust = 0,
-           angle = 90)
-
-
-multiplot(HM,HD,HG,HS, cols=2)
+           label = reorder(pop$PrimaryName, -pop$X0), 
+           angle = 90,
+           col = 'black') +
+  ggtitle('Hero popularity')

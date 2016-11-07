@@ -4,7 +4,7 @@ hero_winrate <- read.csv('data/MMR_hero_overtime.csv')
 hero_winrate$Game.Date <- as.Date(as.character(hero_winrate$Game.Date), '%Y-%m-%d')
 map_names <- list.files('png_files/maps', pattern = '.png')
 
-wellpanelstype <- "background-color: #808080; border-color: #494794;"
+wellpanelstyle <- "background-color: #808080; border-color: #494794;"
 
 shinyUI(fluidPage(
   theme = 'heroes.css',
@@ -41,7 +41,7 @@ shinyUI(fluidPage(
                      'Fill:',
                      choices = c('Group', 'Difficulty'))
       ),
-      style = wellpanelstype
+      style = wellpanelstyle
       ),
       width = 3),
     
@@ -55,7 +55,7 @@ shinyUI(fluidPage(
                               max = max(hero_winrate$Game.Date),
                               animate = T,
                               value = min(hero_winrate$Game.Date)),
-                  style = wellpanelstype)
+                  style = wellpanelstyle)
         
       ),
       conditionalPanel(
@@ -67,11 +67,27 @@ shinyUI(fluidPage(
                               'Compare to:',
                               choices = array(sapply(map_names, function(x) gsub(".png", '', x))),
                               selected = array(sapply(map_names, function(x) gsub(".png", '', x)))[2]),
-                  style = wellpanelstype)
+                  style = wellpanelstyle)
         
         
       ),
       width = 3)
+    
+    # column(
+    # 
+    #   width = 3),
+    
+    
+    # column(
+    #   wellPanel('Info',
+    #     textOutput('helptextbox'),
+    #     tags$head(tags$style("#helptextbox{color: #494794;
+    #                             background-color: #808080;
+    #                              }"
+    #     )
+    #     ),
+    #     style = wellpanelstyle),
+    #   width = 6)
   ),
   fluidRow(
     
@@ -82,6 +98,12 @@ shinyUI(fluidPage(
     column(
       imageOutput('imagespace2'),
       width = 6)
+    ),
+  textOutput('helptextbox'),
+  tags$head(tags$style("#helptextbox{color: #494794;
+                       background-color: #808080;
+                       }"
+    )
     
   )
   

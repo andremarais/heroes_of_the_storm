@@ -307,8 +307,31 @@ shinyServer(
     deleteFile = F
     )
     
-    observeEvent(input$HotsSelectInput, if(input$HotsSelectInput %in% c('Game duration')) hide('hotsplot') else show('hotsplot'))
-
+    
+    output$helptextbox <- renderText({
+      if(input$HotsSelectInput == 'Auto selected heroes') "For the given date range, Graymane wasn't part of the auto-select pool. Same for ChoGull \n The Diffirence in the win-rate between auto-select True and False can be seen as an indication of high difficult it can be to learn how to play the hero"
+         
+         
+         
+         # 'Game duration',
+         # 'Hero level',
+         # 'Hero MMR rating',
+         # 'Hero popularity',
+         # 'Win rate per role per map'
+      
+      
+      
+    })
+    
+    observeEvent(input$HotsSelectInput, 
+                 if(input$HotsSelectInput %in% c('Game duration')) {
+                   hide('hotsplot') 
+                   show('imagespace1') 
+                   show('imagespace2') } else 
+                   {show('hotsplot') 
+                     hide('imagespace1') 
+                     hide('imagespace2')})
+                 
     
   }
 )
