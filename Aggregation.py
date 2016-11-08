@@ -43,6 +43,21 @@ group_games = group_games.merge(map_info, on = 'MapID')
 pd.DataFrame(group_games.groupby(['Map Name', 'Group'])['Group difference'].mean()).to_csv('shiny/data/Group_diff.csv') # added to shiny
 
 
+# Subrole presence for each map
+winners = pd.DataFrame(all_games[all_games['Is Winner'] == True].groupby(['ReplayID', 'MapID', 'SubGroup'])['Is Winner'].count())
+winners['ReplayID'], winners['MapID'], winners['SubGroup'] = [i[0] for i in winners.index.values], [i[1] for i in winners.index.values], [i[2] for i in winners.index.values]
+winners.columns = ['Winning_team', 'ReplayID', 'MapID', 'SubGroup']
+
+losers = pd.DataFrame(all_games[all_games['Is Winner'] == False].groupby(['ReplayID', 'MapID', 'SubGroup'])['Is Winner'].count())
+losers['ReplayID'], losers['MapID'], losers['SubGroup'] = [i[0] for i in losers.index.values], [i[1] for i in losers.index.values], [i[2] for i in losers.index.values]
+losers.columns = ['Losing_team', 'ReplayID', 'MapID', 'SubGroup']
+
+group_games = winners.merge(losers, on=['ReplayID', 'MapID', 'SubGroup'], how='outer').fillna(0)
+group_games['Group difference'] = group_games['Winning_team'] - group_games['Losing_team']
+group_games = group_games.merge(map_info, on = 'MapID')
+
+pd.DataFrame(group_games.groupby(['Map Name', 'SubGroup'])['Group difference'].mean()).to_csv('shiny/data/SubGroup_diff.csv') # added to shiny
+
 # MMR rating of winning/ losing players of each hero
 pd.DataFrame(all_games.groupby(['PrimaryName', 'Group', 'Is Winner'])['Adj MMR Before'].mean()).to_csv('shiny/data/WinningMMRperHero.csv')
 
@@ -110,7 +125,7 @@ pd.DataFrame(all_games.groupby(['Difficulty'])['Hero Level'].mean()).to_csv('shi
 pd.DataFrame(all_games.groupby(['Group'])['Hero Level'].mean()).to_csv('shiny/data/HeroLevel_Group.csv')
 pd.DataFrame(all_games.groupby(['SubGroup'])['Hero Level'].mean()).to_csv('shiny/data/HeroLevel_SubGroup.csv')
 
-a = all_games.head(100000)
+
 
 unique_heroes = a['PrimaryName'].unique()
 
@@ -143,3 +158,11 @@ for r in all_games['ReplayID'].unique():
     games_df = games_df.append(hero_to_bin(unique_heroes, all_games[all_games['ReplayID'] == r]))
 
 print('Done')
+
+a = all_games.head(10000)
+a.groupby(['ReplayID', 'PrimaryName'])['Is Winner'].count()
+for p in a.groupby(['ReplayID', 'Is Winner', 'PrimaryName'])['PrimaryName'].count().index.values:
+    print(p[2])
+
+
+    # i[0] for i in loser_gl.index.values

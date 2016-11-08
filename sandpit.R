@@ -47,3 +47,26 @@ ggplot(pop) +
            angle = 90,
            col = 'black') +
   ggtitle('Hero popularity')
+
+
+
+Group_diff <- read.csv('shiny/data/Group_diff.csv')
+ggplot(Group_diff) + 
+  geom_bar(aes(x = Group, y = Group.difference, fill = Group.difference, col = Group.difference), stat = 'identity', position = 'dodge') +
+  facet_grid(.~Map.Name) +
+  scale_fill_continuous(low = 'indianred1', high = 'royalblue1') +
+  scale_color_continuous(low = 'indianred3', high = 'royalblue3') +
+  theme_light() %+replace% 
+  theme(axis.text.x = element_text(angle = 90,
+                                   color = 'black'), 
+        # strip.text.x = element_text(color = '#009cff', lineheight = 15, size = 15),
+        # strip.background = element_rect(fill = 'red', heightDetails),
+        legend.position = 'none', 
+        axis.text.y = element_blank(),
+        plot.background = element_rect(fill = '#808080', color = '#494794'),
+        panel.background = element_rect(fill = '#808080', color = '#494794'),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_line(colour = '#009cff')) +
+  ylab('Team composition') +
+  xlab('Role') + 
+  ggtitle('Team composition over maps') + coord_flip()
