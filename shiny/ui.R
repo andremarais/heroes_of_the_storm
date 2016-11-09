@@ -102,8 +102,8 @@ shinyUI(fluidPage(
                                font-size: 13px;
                                background-color: #808080;
                                }")
-        ),
-        style = wellpanelstyle)
+                  ),
+                  style = wellpanelstyle)
                   )
       
       ,
@@ -118,10 +118,18 @@ shinyUI(fluidPage(
            width = 6),
     conditionalPanel(
       condition = "input.HotsSelectInput == '--about--'",
-      column(includeMarkdown("www/1.md"), width = 12)
+      wellPanel(htmlOutput('aboutText1'),
+                style = wellpanelstyle),
+      
+      column(plotOutput('aboutPlot1'), width = 4),
+      column(plotOutput('aboutPlot2'), width = 4),
+      column(plotOutput('aboutPlot3'), width = 4),
+      
+      wellPanel(htmlOutput('aboutText2'),
+                style = wellpanelstyle)
     )
   )
   
-
+  
   
     ))

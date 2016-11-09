@@ -70,3 +70,15 @@ ggplot(Group_diff) +
   ylab('Team composition') +
   xlab('Role') + 
   ggtitle('Team composition over maps') + coord_flip()
+
+
+
+MMRAdj <- read.csv('shiny/data/MMRAdj.csv')
+
+ggplot(MMRAdj) + 
+  geom_density(aes(x = x, y = Before), 
+               stat = 'identity', fill = 'indianred1', col = 'indianred3') + 
+  theme_minimal() %+replace% 
+  theme(axis.title = element_blank(),
+        axis.text.y = element_blank())+
+  ggtitle('Before')

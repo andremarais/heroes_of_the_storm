@@ -25,7 +25,11 @@ pop <-
   aggregate(data = pop, X0 ~ PrimaryName + Group + Difficulty, mean)
 
 
+MMRAdj <- read.csv('data/MMRAdj.csv')
+
 Group_diff <- read.csv('data/Group_diff.csv')
+
+
 
 
 plot_colors_fill <- c('dodgerblue2',
@@ -462,12 +466,92 @@ shinyServer(function(input, output) {
                
                )
   
-  # observeEvent(input$HotsSelectInput,
-  #              if (input$HotsSelectInput == '--about--') {
-  #                hide('helptextbox')
-  # } else if (input$HotsSelectInput != '--about--') {
-  #     show('helptextbox')
-  #   })
+  output$aboutText1 <- renderText("All the data handling was done using Python, while the visualization was done using R and Shiny. 
+The dataset consists of 1.9m games over 2 months, which translates to 19m rows of data. Because R does everything in your memory, it gets very messy when you start with any joins and complex aggregation.
+Pandas in Python is super awesome when it comes to fancy aggregation and merging :) 
+
+
+
+                                  The first thing I noticed about the MMR field was a spike in players with a rating of 1700. 
+                                  I assume this is the initial rating for every player, so it's more of a placeholder than anything else")
+  
+  output$aboutText1 <- renderUI({
+    str1 <- "All the data handling was done using Python, while the visualization was done using R and Shiny. 
+The dataset consists of 1.9m games over 2 months, which translates to 19m rows of data. Because R does everything in your memory, it gets very messy when you start with any joins and complex aggregation.
+                  Pandas in Python is super awesome when it comes to fancy aggregation and merging :)"
+    str2 <- "The first thing I noticed about the MMR field was a spike in players with a rating of 1700. 
+                                  I assume this is the initial rating for every new player, so it's more of a placeholder than anything else. 
+                  The logical thing to do is to impute these ratings, instead of ignoring games which contain 1700 ratings. 
+                  The script I set up for that fits a linear regression model, RandomForest and an Adaboost model to the data. 
+                  It then selects the most accurate model (based on a holdout set) and uses that to raplace the 1700 ratings with an adjusted rating"
+    str3 <- "Below is a graph which shows a density plot of the before and adjusted ratings."
+    
+    gap <- ''
+    
+    HTML(paste(str1, gap, str2, gap, str3, sep = '<br/>'))
+    
+  })
+  
+  
+  output$aboutPlot1 <- renderPlot({
+    ggplot(MMRAdj) + 
+      geom_density(aes(x = x, y = Before), 
+                   stat = 'identity', fill = 'firebrick2', col = 'firebrick4', alpha = .65) + 
+      theme_minimal() %+replace% 
+      theme(axis.title = element_blank(),
+            # axis.text.y = element_blank(),
+            plot.background = element_rect(fill = '#808080', color = '#494794'),
+            # panel.background = element_rect(fill = '#808080', color = '#494794'),
+            panel.grid.major = element_blank(),
+            panel.grid.minor = element_blank())+
+      ggtitle('Before')
+  })
+  
+  output$aboutPlot2 <- renderPlot({
+    ggplot(MMRAdj) + 
+      geom_density(aes(x = x, y = Adjusted), 
+                   stat = 'identity', fill = 'dodgerblue2', col = 'dodgerblue4', alpha = .65) + 
+      theme_minimal() %+replace% 
+      theme(axis.title = element_blank(),
+            # axis.text.y = element_blank(),
+            plot.background = element_rect(fill = '#808080', color = '#494794'),
+            # panel.background = element_rect(fill = '#808080', color = '#494794'),
+            panel.grid.major = element_blank(),
+            panel.grid.minor = element_blank())+
+      ggtitle('Adjusted')
+  })
+  
+  
+  output$aboutPlot3 <- renderPlot({
+    ggplot(MMRAdj) + 
+      geom_density(aes(x = x, y = Before), 
+                   stat = 'identity', fill = 'firebrick2', col = 'firebrick4', alpha = .65) + 
+      geom_density(aes(x = x, y = Adjusted), 
+                   stat = 'identity', fill = 'dodgerblue2', col = 'dodgerblue4', alpha = .25) +  
+      theme_minimal() %+replace% 
+      theme(axis.title = element_blank(),
+            # axis.text.y = element_blank(),
+            plot.background = element_rect(fill = '#808080', color = '#494794'),
+            # panel.background = element_rect(fill = '#808080', color = '#494794'),
+            panel.grid.major = element_blank(),
+            panel.grid.minor = element_blank())+
+      ggtitle('Overlapped')
+  })
+  
+  
+  
+  output$aboutText2 <- renderUI({
+    str1 <- "After that, it just became a matter of exploratory data analysis - nothing too tricky. The biggest challenge was to make the plots show something insightful. 
+    Most of the plots which I thought would be awesome, were just meh in the end."
+    str2 <- "The reason for doing  all this, was because the dataset was super clean and fun to play around with. It was also a good opportunity to learn how to work with Pandas :) My Python skills are far behind my R level"
+    str3 <- paste('If you want to have a look at the code, you can have a look at my <a href="https://github.com/veldrin23/heroes_of_the_storm">Github</a> repo.')
+    str4 <- paste('Libraries used:', 'Python: pandas, numpy, matplotlib (for the heatmaps) and sklearn', 'R: shiny, tidyr, ggplot2, scales ands shinyjs', sep =  '<br/>')    
+    str5 <- "Thanks to /u/barrett777 from HOTS Logs for who helped with the data and some quetsions :) Also for alllowing me to ninja his site's CSS settings :P  "
+    gap <- ''
+    
+    HTML(paste(str1, gap, str2, gap, str3, gap, str4, gap, str5, sep = '<br/>'))
+    
+  })
   
   
 })

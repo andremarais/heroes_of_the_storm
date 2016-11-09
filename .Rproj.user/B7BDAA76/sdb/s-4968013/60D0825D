@@ -1,0 +1,21 @@
+{
+    "collab_server" : "",
+    "contents" : "library(reshape2)\n\nauto <-read.csv('shiny/data/Auto.csv')\n\npop <- read.csv('shiny/data/Popularity.csv')\npop <- aggregate(data = pop, X0~ PrimaryName + Group + Difficulty, mean)\n\n\nauto2 <- dcast(auto, PrimaryName ~ Is.Auto.Select, value.var = 'Is.Winner')\nauto2$diff <- auto2$True - auto2$False\n\npop <- merge(pop, auto2, by = 'PrimaryName', type = 'inner')\n\nplot_colors_fill <- c('dodgerblue2',\n                      'indianred2',\n                      'goldenrod3',\n                      'palegreen3'\n)\n\nplot_colors_outline <- c('dodgerblue4',\n                         'indianred4',\n                         'goldenrod4',\n                         'palegreen4'\n)\n\nggplot(pop) + \n  geom_bar(aes_string(x = reorder(pop$PrimaryName, -pop$X0), \n                      y = pop$X0, \n                      fill = 'diff',\n                      col = 'diff'), \n           stat = 'identity',\n           alpha = .85) +\n  theme_minimal() %+replace%\n  theme(axis.text.x = element_blank(),\n        axis.title.y = element_blank(),\n        plot.background = element_rect(fill = '#808080', color = '#494794'),\n        panel.grid.major = element_line(colour = '#009cff'),\n        panel.grid.minor = element_line(colour = '#009cff'))+\n  scale_fill_manual(values = plot_colors_fill) +\n  scale_color_manual(values = plot_colors_outline) +\n  xlab('Hero') +\n  annotate(geom = 'text', \n           x = reorder(pop$PrimaryName, -pop$X0), \n           y = max(pop$X0)*.01, \n           hjust = 0,\n           label = reorder(pop$PrimaryName, -pop$X0), \n           angle = 90,\n           col = 'black') +\n  ggtitle('Hero popularity')\n\n\n\nGroup_diff <- read.csv('shiny/data/Group_diff.csv')\nggplot(Group_diff) + \n  geom_bar(aes(x = Group, y = Group.difference, fill = Group.difference, col = Group.difference), stat = 'identity', position = 'dodge') +\n  facet_grid(.~Map.Name) +\n  scale_fill_continuous(low = 'indianred1', high = 'royalblue1') +\n  scale_color_continuous(low = 'indianred3', high = 'royalblue3') +\n  theme_light() %+replace% \n  theme(axis.text.x = element_text(angle = 90,\n                                   color = 'black'), \n        # strip.text.x = element_text(color = '#009cff', lineheight = 15, size = 15),\n        # strip.background = element_rect(fill = 'red', heightDetails),\n        legend.position = 'none', \n        axis.text.y = element_blank(),\n        plot.background = element_rect(fill = '#808080', color = '#494794'),\n        panel.background = element_rect(fill = '#808080', color = '#494794'),\n        panel.grid.major = element_blank(),\n        panel.grid.minor = element_line(colour = '#009cff')) +\n  ylab('Team composition') +\n  xlab('Role') + \n  ggtitle('Team composition over maps') + coord_flip()\n\n\n\nMMRAdj <- read.csv('shiny/data/MMRAdj.csv')\n\nggplot(MMRAdj) + \n  geom_density(aes(x = x, y = Before), \n               stat = 'identity', fill = 'indianred1', col = 'indianred3') + \n  theme_minimal() %+replace% \n  theme(axis.title = element_blank(),\n        axis.text.y = element_blank())+\n  ggtitle('Before')\n",
+    "created" : 1477559173600.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2466234081",
+    "id" : "60D0825D",
+    "lastKnownWriteTime" : 1478681257,
+    "last_content_update" : 1478681257191,
+    "path" : "C:/Worksies/hots/sandpit.R",
+    "project_path" : "sandpit.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "relative_order" : 5,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
