@@ -2,8 +2,8 @@ name: Heroes
 account: veldrin23
 server: shinyapps.io
 appId: 135711
-bundleId: 609939
+bundleId: 610836
 url: https://veldrin23.shinyapps.io/Heroes/
-when: 1478683938.1556
+when: 1478760554.49829
 asMultiple: FALSE
 asStatic: FALSE

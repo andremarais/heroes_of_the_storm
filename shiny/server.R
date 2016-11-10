@@ -436,7 +436,7 @@ shinyServer(function(input, output) {
       "Simple graph, but it's still interesting. The difficulty level for each hero is from the actual game."
     else if (input$HotsSelectInput == 'Win rate per role per map')
       "I really like this graph, it shows the team composition over the different maps.
-    For example, in Battlefield of Eternity, the losing team has more support/ warriors whereas at Infernal Shrine the winning team has more assassins.
+    For example, in Battlefield of Eternity, the losing team has more support/ warriors whereas at Infernal Shrine the losing team has more assassins.
     One thing that is clear from this graph, is that not having a specialist is bad mkay. "
     
   })
